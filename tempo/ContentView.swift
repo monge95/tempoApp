@@ -7,21 +7,31 @@
 
 import SwiftUI
 
+enum AppTab: String, CaseIterable, Identifiable {
+    case timeline, dias, mapa
+    var id: Self { self }
+}
+
 struct ContentView: View {
+    @State private var selectedTab: AppTab = .timeline
+
     var body: some View {
-        ZStack{
-            Image("fundo")
-                .resizable()
-                .scaledToFill()
-                .ignoresSafeArea()
-            ScrollView{
-                
+        TabView(selection: $selectedTab) {
+            Tab("Timeline", systemImage: "clock", value: .timeline) {
+                TimilileView()
             }
-           
+
+            Tab("Dias", systemImage: "calendar", value: .dias) {
+        
+            }
+
+            Tab("Mapa", systemImage: "map", value: .mapa) {
+                MapaView(selectedTab: $selectedTab)
+                     .toolbar(.hidden, for: .tabBar)
+            }
         }
     }
 }
-
 #Preview {
     ContentView()
 }
