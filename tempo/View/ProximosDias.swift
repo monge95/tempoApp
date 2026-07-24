@@ -1,24 +1,27 @@
 //
-//  TimilileView.swift
+//  constant.swift
 //  tempo
 //
-//  Created by Pedro Monge Silveira on 20/07/26.
+//  Created by Pedro Monge Silveira on 22/07/26.
 //
 
 import SwiftUI
 
-struct TimilileView: View {
+struct ProximosDias : View {
     var body: some View {
-        ZStack{
+        ZStack {
             Image("fundo")
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()
             
+            VStack {
+                Text("Proximos dias")
+            }
         }
     }
 }
 
 #Preview {
-    TimilileView()
+    ProximosDias()
 }

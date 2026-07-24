@@ -14,20 +14,27 @@ enum AppTab: String, CaseIterable, Identifiable {
 
 struct ContentView: View {
     @State private var selectedTab: AppTab = .timeline
+    @State private var tabOrigem: AppTab = .timeline   // ← guarda de onde veio
 
     var body: some View {
         TabView(selection: $selectedTab) {
             Tab("Timeline", systemImage: "clock", value: .timeline) {
-                TimilileView()
+                TimiLineView()
             }
 
             Tab("Dias", systemImage: "calendar", value: .dias) {
-        
+                ProximosDias()
             }
 
             Tab("Mapa", systemImage: "map", value: .mapa) {
-                MapaView(selectedTab: $selectedTab)
-                     .toolbar(.hidden, for: .tabBar)
+                MapaView(selectedTab: $selectedTab, tabOrigem: tabOrigem)
+                    .toolbar(.hidden, for: .tabBar)
+            }
+        }
+        .onChange(of: selectedTab) { oldTab, newTab in
+            // Quando entra no mapa, salva de onde veio
+            if newTab == .mapa {
+                tabOrigem = oldTab
             }
         }
     }
