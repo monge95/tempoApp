@@ -22,7 +22,7 @@ struct SunPositionView: View {
 
             VStack(spacing: 0) {
 
-                // MARK: Header
+            
 
                 HStack {
 
@@ -70,7 +70,6 @@ struct SunPositionView: View {
                 Spacer()
                     .frame(height: 25)
 
-                // MARK: Cidade
 
                 VStack(spacing: 6) {
 
@@ -91,7 +90,6 @@ struct SunPositionView: View {
                 Spacer()
                     .frame(height: 22)
 
-                // MARK: Arco do Sol (vamos criar depois)
 
             Image("SunArc")
                     .resizable()
@@ -100,7 +98,6 @@ struct SunPositionView: View {
                     .padding(.top, 36)
                     .padding(.bottom, 10)
 
-                // MARK: Card Azul
 
                 ScrollView(showsIndicators: false) {
 
@@ -126,7 +123,6 @@ struct SunPositionView: View {
                   }
 
 
-                // MARK: Indicadores
 
                 ZStack {
 
