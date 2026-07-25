@@ -7,8 +7,16 @@
 import SwiftUI
 
 struct TimiLineView: View {
+    
     @State private var showPopover = false
+    @State private var abrirDetalhes = false
+    
+    enum TelaDetalhes {
+        case clima
+        case sol
+    }
 
+    @State private var telaAtual: TelaDetalhes = .clima
     
     var body: some View {
         NavigationStack {
@@ -50,6 +58,7 @@ struct TimiLineView: View {
 
                     ScrollView {
                         Button {
+                            abrirDetalhes = true
                         } label: {
                             Image("timeline")
                                 .padding(.horizontal, geo.size.width / 15)
@@ -126,10 +135,12 @@ struct TimiLineView: View {
                         .transition(.opacity.combined(with: .scale(scale: 0.95)))
                     }
                 }
-                .ignoresSafeArea(.all, edges: .top) // ignora só o topo
+                .ignoresSafeArea(.all, edges: .top)// ignora só o topo
+                
             }
             .navigationBarHidden(true) // força remover o espaço
             .toolbar(.hidden, for: .navigationBar)
+            
         }
     }
 }
