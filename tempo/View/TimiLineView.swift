@@ -9,7 +9,7 @@ import SwiftUI
 struct TimiLineView: View {
     
     @State private var showPopover = false
-    
+  
     enum TelaDetalhes {
         case clima
         case sol
