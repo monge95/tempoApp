@@ -32,7 +32,7 @@ struct ContentView: View {
             }
         }
         .onChange(of: selectedTab) { oldTab, newTab in
-            // Quando entra no mapa, salva de onde veio
+        
             if newTab == .mapa {
                 tabOrigem = oldTab
             }

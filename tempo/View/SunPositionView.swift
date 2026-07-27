@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SunPositionView: View {
-
+    @State var showPopover: Bool = false
     @Binding var selectedTab: AppTab
 
     var body: some View {
@@ -20,52 +20,24 @@ struct SunPositionView: View {
                 .scaledToFill()
                 .ignoresSafeArea()
 
-            VStack(spacing: 0) {
-
-            
-
+            VStack{
                 HStack {
 
-                    Button {
-                        selectedTab = .timeline
-                    } label: {
-
-                        Circle()
-                            .fill(.white.opacity(0.8))
-                            .frame(width: 48, height: 48)
-                            .overlay {
-
-                                Image(systemName: "chevron.left")
-                                    .font(.title3)
-                                    .foregroundStyle(.blue)
-
-                            }
-
-                    }
-
+                    Spacer()
                     Spacer()
 
-                    Text("Posição do sol")
+                    Text("Posição do Sol")
                         .font(.system(size: 22,
                                       weight: .semibold,))
                         .foregroundStyle(.white)
 
                     Spacer()
 
-                    Circle()
-                        .fill(.white.opacity(0.8))
-                        .frame(width: 48, height: 48)
-                        .overlay {
-
-                            Image(systemName: "bell")
-                                .font(.title2)
-                                .foregroundStyle(.blue)
-
-                        }
+                    SinoButton()
 
                 }
                 .padding(.horizontal, 24)
-                .padding(.top, 40)
+                .padding(.top)
 
                 Spacer()
                     .frame(height: 25)

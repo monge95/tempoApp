@@ -9,7 +9,7 @@ import SwiftUI
 struct TimiLineView: View {
     
     @State private var showPopover = false
-    @State private var abrirDetalhes = false
+  
     
     enum TelaDetalhes {
         case clima
@@ -27,46 +27,50 @@ struct TimiLineView: View {
                         .scaledToFill()
                         .ignoresSafeArea()
 
-                    VStack {
+                    ZStack {
+                        // Localizaçao
                         HStack {
                             NavigationLink {
-                                ProximosDias()
+                                BuscarLocalizacao()
                             } label: {
                                 Image(systemName: "mappin.and.ellipse.circle.fill")
                                     .font(.system(size: geo.size.width / 9))
                                     .foregroundStyle(.white)
-                                    .padding(.trailing, geo.size.width / 4.5)
                             }
-
-                            Text("Timeline")
-                                .font(.system(size: 22, weight: .semibold))
-
-                                .foregroundStyle(.white)
-
-                            Button {
-                                showPopover.toggle()
-                            } label: {
-                                Image(systemName: "bell.circle.fill")
-                                    .font(.system(size: geo.size.width / 9))
-                                    .foregroundStyle(.white)
-                                    .padding(.leading, geo.size.width / 4.5)
-                            }
+                            .padding(.leading)
+                            Spacer()
                         }
-                        .padding(.top, geo.size.height / 20) // responsivo e menor
+                        
+                        
+                        Text("Próximos dias")
+                            .font(.system(size: 22, weight: .semibold))
+                            .foregroundStyle(.white)
+                        
+                        // sino
+                        HStack {
+                            Spacer()
+                            SinoButton()
+                                .padding(.trailing)
+                        }
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                    .padding(.top, geo.size.height / 20)
+                    
 
                     ScrollView {
-                        Button {
-                            abrirDetalhes = true
+                        NavigationLink {
+                            SunPositionView(selectedTab: .constant(.timeline))
                         } label: {
                             Image("timeline")
                                 .padding(.horizontal, geo.size.width / 15)
                                 .padding(.bottom, geo.size.height / 5)
                         }
+                        
                     }
                     .padding(.top, geo.size.height / 7)
                     
+                    
+                    // pop pap
                     if showPopover {
                         ZStack {
                             Color.black.opacity(0.3)
