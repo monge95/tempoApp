@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ProximosDias : View {
     @State private var showPopover = false
+    @State private var minhaData = Date()
+
     
     var body: some View {
         
@@ -49,10 +51,19 @@ struct ProximosDias : View {
                         }
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-                    .padding(.top, geo.size.height / 20)
+                    .padding(.top, geo.size.height / 16)
                     Spacer()
                     
+                    ScrollView(.vertical, showsIndicators: false) {
+                        
+                        ProximoDia(quantidade: 4)
+                            .padding(.bottom, geo.size.height / 5)
+                            .padding(.horizontal,  geo.size.height / 40)
+                    }
+                    .padding(.top, geo.size.height / 6)
                     
+            
+
                 }
             }
         }
