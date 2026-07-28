@@ -10,6 +10,9 @@ import SwiftUI
 struct OverlayTemperatura: View {
     var body: some View {
         ZStack {
+            ZStack{
+                
+          
             LinearGradient(
                 stops: [
                     .init(color: Color("vermelho"),    location: 0.00),
@@ -46,15 +49,19 @@ struct OverlayTemperatura: View {
                            endRadius: 220
                        )
             
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .ignoresSafeArea()
+            .opacity(0.78)
+            .blendMode(.multiply)
+            .allowsHitTesting(false)// deixa o toque passar pro mapa
       
+            Image("legendaDeCalor")
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                .padding(.horizontal, 20)
+                .allowsHitTesting(false)
             
-            
-                   }
-                   .frame(maxWidth: .infinity, maxHeight: .infinity)
-                   .ignoresSafeArea()
-                   .opacity(0.78)
-                   .blendMode(.multiply)
-                   .allowsHitTesting(false)// deixa o toque passar pro mapa
+                    }
     }
 }
 

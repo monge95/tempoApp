@@ -51,7 +51,7 @@ struct ProximosDias : View {
                         }
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-                    .padding(.top, geo.size.height / 16)
+                    .padding(.top, geo.size.height / 10)
                     Spacer()
                     
                     ScrollView(.vertical, showsIndicators: false) {
@@ -60,7 +60,7 @@ struct ProximosDias : View {
                             .padding(.bottom, geo.size.height / 5)
                             .padding(.horizontal,  geo.size.height / 40)
                     }
-                    .padding(.top, geo.size.height / 6)
+                    .padding(.top, geo.size.height / 5)
                     
             
 

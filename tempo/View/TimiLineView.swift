@@ -54,31 +54,31 @@ struct TimiLineView: View {
                         }
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-                    .padding(.top, geo.size.height / 15)
+                    .padding(.top, geo.size.height / 10)
                     Spacer()
                     
                     
                  
                     
                    ScrollView {
-                        NavigationLink {
-                            SunPositionView(selectedTab: .constant(.timeline))
-                        } label: {
+                       NavigationLink{
+                           PagedWeatherView(selectedTab: .constant(.timeline))
+                       } label: {
                             Image("timeline")
                                 .padding(.bottom, geo.size.height / 5)
                         }
                         
                     }
-                   .padding(.top, geo.size.height / 3.8)
+                   .padding(.top, geo.size.height / 3)
                 
                     Seletor()
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-                        .padding(.top, geo.size.height * 0.15)
+                        .padding(.top, geo.size.height * 0.20)
                     Text("Hoje, \(minhaData.formatted(.dateTime.day()) + " de " + minhaData.formatted(.dateTime.month()))")
                         .font(Font.system(.title3, design: .rounded))
                         .foregroundStyle(Color.white.opacity(0.8))
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-                        .padding(.top, geo.size.height * 0.19)
+                        .padding(.top, geo.size.height * 0.24)
                         
                 }
                 .ignoresSafeArea(.all, edges: .top)// ignora só o topo
