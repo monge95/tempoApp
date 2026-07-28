@@ -8,15 +8,12 @@
 import SwiftUI
 import MapKit
 
-import SwiftUI
-import MapKit
-
 struct MapaView: View {
     @Binding var selectedTab: AppTab
-    var tabOrigem: AppTab          // ← recebe a tab de origem
+    var tabOrigem: AppTab
     @State private var viewModel = MapaViewModel()
-    
     @State private var hora = 2.0
+    @State private var overlayAtivo: OverlayType = .temperatura
 
     var body: some View {
         NavigationStack {
@@ -32,12 +29,14 @@ struct MapaView: View {
                 .toolbarBackground(.hidden, for: .navigationBar)
                 .navigationBarTitleDisplayMode(.inline)
 
-                OverlayTemperatura()
-
-                Image("legendaDeCalor")
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                    .padding(.horizontal, 20)
-                    .allowsHitTesting(false)
+                switch overlayAtivo {
+                case .temperatura:
+                    OverlayTemperatura()
+                case .ventos:
+                    OverlayVentos()
+                case .nenhum:
+                    EmptyView()
+                }
 
                 VStack {
                     HStack {
@@ -50,15 +49,20 @@ struct MapaView: View {
                                 .frame(width: 44, height: 44)
                         }
                         .glassEffect(.regular.tint(.black.opacity(0.3)))
-                        
+
+                        Spacer()
+
+                       
+                     
+
                         Spacer()
                     }
                     .padding(.horizontal, 16)
                     .padding(.top, 8)
-                    
+
                     Spacer()
-                    
-                    VStack{
+
+                    VStack {
                         HStack {
                             Text("")
                             Spacer()
@@ -73,13 +77,12 @@ struct MapaView: View {
                         }
                         .foregroundStyle(.black)
                         .padding(.horizontal, 10)
-                        
+
                         HStack(spacing: 15) {
                             Image(systemName: "play.fill")
                                 .foregroundStyle(.black)
                                 .font(.system(size: 20, weight: .bold))
 
-                            
                             Slider(value: $hora, in: 1...5, step: 1)
                                 .tint(.blue)
                         }
@@ -90,11 +93,11 @@ struct MapaView: View {
                     .cornerRadius(20)
                     .padding(.horizontal, 24)
                     .padding(.bottom, 30)
-                    }
                 }
             }
         }
     }
+}
 
 #Preview {
     MapaView(selectedTab: .constant(.mapa), tabOrigem: .timeline)

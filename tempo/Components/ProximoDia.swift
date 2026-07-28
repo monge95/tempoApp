@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-// Modelo simples para o ícone + cor
 struct ClimaIcon: Identifiable {
     let id = UUID()
     let icon: String
