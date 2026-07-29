@@ -92,11 +92,12 @@ struct MapaView: View {
                             }
 
                             if cardAtivo == .segundo {
-                                SeletorLocalMap()
-                                    .transition(
-                                        .move(edge: .trailing)
-                                        .combined(with: .opacity)
-                                    )
+                                SeletorLocalMap {
+                                    withAnimation(.easeInOut(duration: 0.25)) {
+                                        cardAtivo = .nenhum
+                                    }
+                                }
+                                .transition(.move(edge: .trailing).combined(with: .opacity))
                             }
 
                             VStack(spacing: 2) {
