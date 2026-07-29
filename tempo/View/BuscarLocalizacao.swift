@@ -43,7 +43,7 @@ struct BuscarLocalizacao: View {
                         Text("timeline")
                             .font(.system(size: 22, weight: .semibold))
                             .foregroundStyle(.white)
-                        
+                    
                     
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)

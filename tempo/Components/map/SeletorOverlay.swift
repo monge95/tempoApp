@@ -5,21 +5,17 @@
 //  Created by Pedro Monge Silveira on 27/07/26.
 //
 
-
-
-import SwiftUI
-
-// SeletorOverlay.swift
 import SwiftUI
 
 struct SeletorOverlay: View {
     @Binding var overlayAtivo: OverlayType
+    var onSelecao: () -> Void = {}
 
     var body: some View {
         VStack(spacing: 2) {
-            botao(.temperatura, icon: "thermometer.medium", label: "Temp")
+            botao(.temperatura, icon: "thermometer.medium", label: "Temperatura")
+            botao(.precipitacao, icon: "umbrella", label: "Precipitação")
             botao(.ventos, icon: "wind", label: "Vento")
-            botao(.nenhum, icon: "eye.slash", label: "Off")
         }
         .padding(4)
         .background(.ultraThinMaterial)
@@ -33,6 +29,8 @@ struct SeletorOverlay: View {
             withAnimation(.easeInOut(duration: 0.2)) {
                 overlayAtivo = tipo
             }
+            // Dispara o fechamento do card no MapaView
+            onSelecao()
         } label: {
             HStack(spacing: 6) {
                 Image(systemName: icon)
@@ -52,6 +50,7 @@ struct SeletorOverlay: View {
         }
     }
 }
+
 #Preview {
     SeletorOverlay(overlayAtivo: .constant(.temperatura))
 }

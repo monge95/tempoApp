@@ -7,6 +7,6 @@
 
 enum OverlayType: String, CaseIterable {
     case temperatura = "Temperatura"
+    case precipitacao = "Precipitação"
     case ventos = "Vento"
-    case nenhum = "Nenhum"
 }

@@ -96,4 +96,5 @@ struct Seletor: View {
 
 #Preview {
     Seletor()
+        .background(Color.gray)
 }
